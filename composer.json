@@ -31,11 +31,11 @@
     },
     "scripts": {
         "refresh" : "git clean -xffd && composer install --ansi",
-        "install-phpcs-rules" : "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
+        "install:phpcs-rules" : "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
+        "install:wptests": "bin/install-wp-tests.sh plugin_testing_tests root 'root' 127.0.0.1:8889 latest true",
+        "fix:php" : "./vendor/bin/phpcbf wordpress-plugin-template.php ./src",
         "lint:php" : "./vendor/bin/phpcs ./ --extensions=php --ignore=vendor/,tests/",
-        "fix:php" : "./vendor/bin/phpcbf ./inc && ./vendor/bin/phpcbf ./src",
-        "test:php": "./vendor/bin/phpunit --colors=always tests",
-        "test:php-testdox": "@test:php --testdox",
-        "wp:install-tests": "bin/install-wp-tests.sh wordpress_unit_tests root 'root' 127.0.0.1:8889 latest true"
+        "test:php": "./vendor/bin/phpunit --colors=always",
+        "test:php-testdox": "@test:php --testdox"
     }
 }
