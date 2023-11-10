@@ -4,7 +4,7 @@
     "authors": [
         {
             "name": "Seb Kay",
-            "email": "seb@sebkay.com"
+            "email": "seb@fhoke.com"
         }
     ],
     "minimum-stability": "stable",
@@ -13,29 +13,29 @@
             "WPT\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
     "require": {
-        "php": "^7.4"
+        "php": "^8.2",
+        "illuminate/collections": "^10.28",
+        "saloonphp/saloon": "^3.0",
+        "monolog/monolog": "^3.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.0",
-        "phpcompatibility/phpcompatibility-wp": "*",
-        "wp-coding-standards/wpcs": "^2.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-        "squizlabs/php_codesniffer": "^3.5",
-        "spatie/ray": "^1.3"
+        "spatie/ray": "^1.39",
+        "php-stubs/wordpress-stubs": "^6.3",
+        "laravel/pint": "^1.13"
     },
     "scripts": {
-        "refresh" : "git clean -xffd && composer install --ansi",
-        "install:phpcs-rules" : "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
-        "install:wptests": "bin/install-wp-tests.sh plugin_testing_tests root 'root' 127.0.0.1:8889 latest true",
-        "fix:php" : "./vendor/bin/phpcbf wordpress-plugin-template.php ./src",
-        "lint:php" : "./vendor/bin/phpcs ./ --extensions=php --ignore=vendor/,tests/",
-        "test:php": "./vendor/bin/phpunit --colors=always",
-        "test:php-testdox": "@test:php --testdox"
+        "build:dev": [
+            "composer install"
+        ],
+        "build:prod": [
+            "composer install --no-dev"
+        ],
+        "lint": [
+            "./vendor/bin/pint --test -v"
+        ],
+        "fix": [
+            "./vendor/bin/pint"
+        ]
     }
 }
