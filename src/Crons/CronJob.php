@@ -1,6 +1,6 @@
 <?php
 
-namespace WPT\CronJobs;
+namespace WPT\Crons;
 
 use SebKay\WPCronable\WPCronable;
 use WPT\Concerns\Instanceable;
