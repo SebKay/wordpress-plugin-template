@@ -1,38 +1,29 @@
 <?php
 /*
     Plugin Name: WordPress Plugin Template
-    Description: A simple template for making OOP WordPress plugins.
-    Version: 0.1.0
-    Requires PHP: 7.4
+    Description: A simple template for writing WordPress plugins.
+    Version: 0.2.0
+    Requires PHP: 8.2
     Text Domain: wp-plugin-template
     Author: Seb Kay
-    Author URI: http://www.sebkay.com
+    Author URI: http://sebkay.com
+    WC requires at least: 6.0.0
+    WC tested up to: 6.4.3
 */
 
-defined('ABSPATH') or die('No script kiddies please!');
+defined('ABSPATH') or exit;
 
-/**
- * Autoloader for dependencies
- */
-$wpt_autoload_file = __DIR__ . '/vendor/autoload.php';
+define('WPT_PLUGIN_NAME', 'WordPress Plugin Template');
+define('WPT_PLUGIN_SLUG', 'wpt');
+define('WPT_DIR_PATH', plugin_dir_path(__FILE__));
+define('WPT_WP_ROOT', WPT_DIR_PATH.'/../../../');
+define('WPT_LOGS', WPT_DIR_PATH.'/wpt-logs');
 
-if ( is_file($wpt_autoload_file) ) {
-    require_once $wpt_autoload_file;
+require_once WPT_DIR_PATH.'/vendor/autoload.php';
+
+function wpt_plugin()
+{
+    return WPT\Plugin::instance();
 }
 
-/**
- * Config
- */
-$wpt_plugin = new \WPT\WPT();
-
-/**
- * Add option when plugin is activated
- */
-register_activation_hook(__FILE__, function() use ( $wpt_plugin ) {
-    add_option('wpt_plugin_loaded', $wpt_plugin::PLUGIN_SLUG);
-});
-
-/**
- * Run plugin
- */
-$wpt_plugin->run();
+wpt_plugin()->run();
