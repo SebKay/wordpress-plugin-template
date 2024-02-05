@@ -8,11 +8,11 @@ class Plugin
 {
     use Instanceable;
 
-    protected Logger $log;
+    protected Logger $logger;
 
     public function logger(): Logger
     {
-        return $this->log ??= new Logger();
+        return $this->logger ??= new Logger();
     }
 
     public function run(): void
