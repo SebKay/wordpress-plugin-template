@@ -15,11 +15,12 @@
     },
     "require": {
         "php": "^8.2",
-        "illuminate/collections": "^10.28",
+        "illuminate/collections": "^10.43",
         "saloonphp/saloon": "^3.0",
         "monolog/monolog": "^3.4",
         "coenjacobs/mozart": "^0.7.1",
-        "deliciousbrains/wp-background-processing": "^1.2"
+        "deliciousbrains/wp-background-processing": "^1.2",
+        "sebkay/wp-cronable": "^1.0"
     },
     "require-dev": {
         "spatie/ray": "^1.39",
