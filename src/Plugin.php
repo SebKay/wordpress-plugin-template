@@ -35,6 +35,7 @@ class Plugin
         }, 10);
 
         \add_action('admin_init', function () {
+            \register_setting('wpt-options', 'wpt_cron_enabled');
             \register_setting('wpt-options', 'wpt_text_option');
             \register_setting('wpt-options', 'wpt_radio_option');
             \register_setting('wpt-options', 'wpt_select_option');
@@ -66,7 +67,11 @@ class Plugin
             $this->options();
             $this->cronSchedules();
 
-            $this->cronJob()->scheduleCron();
+            if (! \get_option('wpt_cron_enabled', 0)) {
+                $this->cronJob()->unscheduleCron();
+            } else {
+                $this->cronJob()->scheduleCron();
+            }
         }, 10);
     }
 }
