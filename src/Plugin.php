@@ -2,7 +2,9 @@
 
 namespace WPT;
 
+use SebKay\WPCronable\Helpers;
 use WPT\Concerns\Instanceable;
+use WPT\Crons\CronJob;
 
 class Plugin
 {
@@ -39,8 +41,32 @@ class Plugin
         }, 10);
     }
 
+    public function cronSchedules(): void
+    {
+        add_filter('cron_schedules', function (array $schedules): array {
+            \collect(Helpers::wpCronIntervals())->each(function (array $interval) use (&$schedules) {
+                $schedules[$interval['slug']] = [
+                    'interval' => $interval['value'] ?? '',
+                    'display' => $interval['label'] ?? '',
+                ];
+            });
+
+            return $schedules;
+        }, );
+    }
+
+    public function cronJob(): CronJob
+    {
+        return CronJob::instance();
+    }
+
     public function run(): void
     {
-        \add_action('plugins_loaded', [$this, 'options'], 10);
+        \add_action('plugins_loaded', function (): void {
+            $this->options();
+            $this->cronSchedules();
+
+            $this->cronJob()->scheduleCron();
+        }, 10);
     }
 }
