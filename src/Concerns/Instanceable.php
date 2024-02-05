@@ -6,10 +6,7 @@ trait Instanceable
 {
     protected static $instance;
 
-    /**
-     * @return static
-     */
-    public static function instance(...$args)
+    public static function instance(...$args): static
     {
         return static::$instance ??= new static(...$args);
     }
