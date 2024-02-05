@@ -16,6 +16,27 @@
         <table class="form-table">
             <tr valign="top">
                 <th scope="row">
+                    <?php _e('Enabled', 'wp-plugin-template'); ?>
+                </th>
+                <td>
+                    <label>
+                        <input type="radio" name="wpt_cron_enabled" value="0" <?php checked(0, esc_attr(get_option('wpt_cron_enabled', 0))); ?>>
+                        <span>
+                            No
+                        </span>
+                    </label>
+                    <br><br>
+                    <label>
+                        <input type="radio" name="wpt_cron_enabled" value="1" <?php checked(1, esc_attr(get_option('wpt_cron_enabled', 0))); ?>>
+                        <span>
+                            Yes
+                        </span>
+                    </label>
+                </td>
+            </tr>
+
+            <tr valign="top">
+                <th scope="row">
                     <?php _e('Text', 'wp-plugin-template'); ?>
                 </th>
                 <td>
