@@ -11,7 +11,10 @@
     "autoload": {
         "psr-4": {
             "WPT\\": "src/"
-        }
+        },
+        "classmap": [
+            "classes/dependencies"
+        ]
     },
     "require": {
         "php": "^8.2",
