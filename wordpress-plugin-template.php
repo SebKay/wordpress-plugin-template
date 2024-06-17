@@ -6,7 +6,7 @@
     Requires PHP: 8.2
     Text Domain: wp-plugin-template
     Author: Seb Kay
-    Author URI: http://sebkay.com
+    Author URI: https://sebkay.com
     WC requires at least: 6.0.0
     WC tested up to: 6.4.3
 */
