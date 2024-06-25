@@ -21,6 +21,7 @@ define('WPT_LOGS', WPT_WP_ROOT.'/wpt-logs');
 
 require_once WPT_DIR_PATH.'/vendor/autoload.php';
 
+require_once WPT_DIR_PATH.'/inc/helpers.php';
 require_once WPT_DIR_PATH.'/inc/notices.php';
 
 function wptPlugin()

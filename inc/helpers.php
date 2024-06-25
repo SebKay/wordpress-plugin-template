@@ -2,7 +2,7 @@
 
 namespace WPT\Helpers;
 
-function setting(string $key, $default = null)
+function setting(string $key, $default = false)
 {
-    return \get_option(option: "wpt_{$key}", default: $default);
+    return \get_option("wpt_{$key}", $default);
 }

@@ -1,4 +1,10 @@
-<?php defined('ABSPATH') or exit; ?>
+<?php
+
+use function WPT\Helpers\setting;
+
+defined('ABSPATH') or exit;
+
+?>
 
 <div class="wrap">
     <h1>
@@ -20,14 +26,14 @@
                 </th>
                 <td>
                     <label>
-                        <input type="radio" name="wpt_cron_enabled" value="0" <?php checked(0, esc_attr(get_option('wpt_cron_enabled', 0))); ?>>
+                        <input type="radio" name="wpt_cron_enabled" value="0" <?php checked(0, esc_attr(setting('cron_enabled'))); ?>>
                         <span>
                             No
                         </span>
                     </label>
                     <br><br>
                     <label>
-                        <input type="radio" name="wpt_cron_enabled" value="1" <?php checked(1, esc_attr(get_option('wpt_cron_enabled', 0))); ?>>
+                        <input type="radio" name="wpt_cron_enabled" value="1" <?php checked(1, esc_attr(setting('cron_enabled'))); ?>>
                         <span>
                             Yes
                         </span>
@@ -40,7 +46,7 @@
                     <?php _e('Text', 'wp-plugin-template'); ?>
                 </th>
                 <td>
-                    <input type="text" name="wpt_text_option" value="<?php echo esc_attr(get_option('wpt_text_option')); ?>">
+                    <input type="text" name="wpt_text_option" value="<?php echo esc_attr(setting('text_option')); ?>">
                 </td>
             </tr>
 
@@ -50,14 +56,14 @@
                 </th>
                 <td>
                     <label>
-                        <input type="radio" name="wpt_radio_option" value="0" <?php checked(0, esc_attr(get_option('wpt_radio_option', 0))); ?>>
+                        <input type="radio" name="wpt_radio_option" value="0" <?php checked(0, esc_attr(setting('radio_option', 0))); ?>>
                         <span>
                             No
                         </span>
                     </label>
                     <br><br>
                     <label>
-                        <input type="radio" name="wpt_radio_option" value="1" <?php checked(1, esc_attr(get_option('wpt_radio_option', 0))); ?>>
+                        <input type="radio" name="wpt_radio_option" value="1" <?php checked(1, esc_attr(setting('radio_option', 0))); ?>>
                         <span>
                             Yes
                         </span>
@@ -71,9 +77,9 @@
                 </th>
                 <td>
                     <select name="wpt_select_option">
-                        <option value="1" <?php selected(get_option('wpt_select_option'), 1); ?>>1</option>
-                        <option value="10" <?php selected(get_option('wpt_select_option'), 10); ?>>10</option>
-                        <option value="25" <?php selected(get_option('wpt_select_option'), 25); ?>>25</option>
+                        <option value="1" <?php selected(setting('select_option'), 1); ?>>1</option>
+                        <option value="10" <?php selected(setting('select_option'), 10); ?>>10</option>
+                        <option value="25" <?php selected(setting('select_option'), 25); ?>>25</option>
                     </select>
                 </td>
             </tr>
@@ -92,14 +98,14 @@
                 </th>
                 <td>
                     <label>
-                        <input type="radio" name="wpt_test_cron_enabled" value="0" <?php checked(0, esc_attr(get_option('wpt_test_cron_enabled', 0))); ?>>
+                        <input type="radio" name="wpt_test_cron_enabled" value="0" <?php checked(0, esc_attr(setting('test_cron_enabled'))); ?>>
                         <span>
                             No
                         </span>
                     </label>
                     <br><br>
                     <label>
-                        <input type="radio" name="wpt_test_cron_enabled" value="1" <?php checked(1, esc_attr(get_option('wpt_test_cron_enabled', 0))); ?>>
+                        <input type="radio" name="wpt_test_cron_enabled" value="1" <?php checked(1, esc_attr(setting('test_cron_enabled'))); ?>>
                         <span>
                             Yes
                         </span>

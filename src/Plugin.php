@@ -6,6 +6,8 @@ use SebKay\WPCronable\Helpers;
 use WPT\Concerns\Instanceable;
 use WPT\Crons\CronJob;
 
+use function WPT\Helpers\setting;
+
 class Plugin
 {
     use Instanceable;
@@ -68,7 +70,7 @@ class Plugin
             $this->options();
             $this->cronSchedules();
 
-            if (! \get_option('wpt_cron_enabled', 0) || ! \get_option('wpt_test_cron_enabled', 0)) {
+            if (! setting('cron_enabled') || ! setting('test_cron_enabled')) {
                 $this->cronJob()->unscheduleCron();
             } else {
                 $this->cronJob()->scheduleCron();
