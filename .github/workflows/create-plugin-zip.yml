@@ -1,0 +1,33 @@
+name: ZIP Plugin
+
+on:
+  push:
+    branches:
+      - 1.x
+
+jobs:
+  create-plugin-zip:
+    name: Create ZIP
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: Build for production
+        run: composer build:prod
+
+      - name: Upload ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wordpress-plugin-template
+          path: |
+            classes
+            inc
+            src
+            vendor
+            wordpress-plugin-template.php
