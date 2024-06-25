@@ -21,9 +21,9 @@ define('WPT_LOGS', WPT_DIR_PATH.'/wpt-logs');
 
 require_once WPT_DIR_PATH.'/vendor/autoload.php';
 
-function wpt_plugin()
+function wptPlugin()
 {
     return WPT\Plugin::instance();
 }
 
-wpt_plugin()->run();
+wptPlugin()->run();
