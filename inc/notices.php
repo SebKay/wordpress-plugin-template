@@ -4,11 +4,13 @@ namespace WPT;
 
 use WPT\Enums\NoticeType;
 
+use function WPT\Helpers\setting;
+
 function adminNotices()
 {
     return [
         NoticeType::Test->value => [
-            'enabled' => \get_option('wpt_notice_for_'.NoticeType::Test->value, false),
+            'enabled' => setting('notice_for_'.NoticeType::Test->value, false),
             'type' => 'info',
             'text' => __('This is a test notice.', 'wp-plugin-template'),
         ],

@@ -6,6 +6,8 @@ use SebKay\WPCronable\Helpers;
 use WPT\Concerns\Instanceable;
 use WPT\Crons\CronJob;
 
+use function WPT\Helpers\setting;
+
 class Plugin
 {
     use Instanceable;
@@ -39,12 +41,13 @@ class Plugin
             \register_setting('wpt-options', 'wpt_text_option');
             \register_setting('wpt-options', 'wpt_radio_option');
             \register_setting('wpt-options', 'wpt_select_option');
+            \register_setting('wpt-options', 'wpt_test_cron_enabled');
         }, 10);
     }
 
     public function cronSchedules(): void
     {
-        add_filter('cron_schedules', function (array $schedules): array {
+        \add_filter('cron_schedules', function (array $schedules): array {
             \collect(Helpers::wpCronIntervals())->each(function (array $interval) use (&$schedules) {
                 $schedules[$interval['slug']] = [
                     'interval' => $interval['value'] ?? '',
@@ -67,7 +70,7 @@ class Plugin
             $this->options();
             $this->cronSchedules();
 
-            if (! \get_option('wpt_cron_enabled', 0)) {
+            if (! setting('cron_enabled') || ! setting('test_cron_enabled')) {
                 $this->cronJob()->unscheduleCron();
             } else {
                 $this->cronJob()->scheduleCron();
