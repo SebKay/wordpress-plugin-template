@@ -1,11 +1,9 @@
 name: ZIP Plugin
 
-# on:
-#   push:
-#     branches:
-#       - 1.x
-
-on: [pull_request]
+on:
+  push:
+    branches:
+      - 1.x
 
 jobs:
   create-plugin-zip:
