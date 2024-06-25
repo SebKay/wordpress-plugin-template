@@ -17,13 +17,13 @@ define('WPT_PLUGIN_NAME', 'WordPress Plugin Template');
 define('WPT_PLUGIN_SLUG', 'wpt');
 define('WPT_DIR_PATH', plugin_dir_path(__FILE__));
 define('WPT_WP_ROOT', WPT_DIR_PATH.'/../../../');
-define('WPT_LOGS', WPT_DIR_PATH.'/wpt-logs');
+define('WPT_LOGS', WPT_WP_ROOT.'/wpt-logs');
 
 require_once WPT_DIR_PATH.'/vendor/autoload.php';
 
-function wpt_plugin()
+function wptPlugin()
 {
     return WPT\Plugin::instance();
 }
 
-wpt_plugin()->run();
+wptPlugin()->run();

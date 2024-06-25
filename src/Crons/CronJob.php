@@ -16,8 +16,7 @@ class CronJob extends WPCronable
 
     public function __construct(
         protected $process = new BackgroundProcess(),
-    ) {
-    }
+    ) {}
 
     public function run(): void
     {
@@ -43,6 +42,8 @@ class CronJob extends WPCronable
             $this->process->dispatch();
         } catch (\Exception $e) {
             \error_log($e);
+
+            \wptPlugin()->logger()->general()->error($e->getMessage());
         }
     }
 }

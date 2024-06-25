@@ -17,7 +17,7 @@ class BackgroundProcess extends \WPT_WP_Background_Process
         } catch (\Exception $e) {
             \error_log($e);
 
-            \wpt_plugin()->logger()->general()->error($e->getMessage());
+            \wptPlugin()->logger()->general()->error($e->getMessage());
         }
 
         return false;
