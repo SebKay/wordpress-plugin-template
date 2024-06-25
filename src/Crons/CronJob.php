@@ -4,7 +4,10 @@ namespace WPT\Crons;
 
 use SebKay\WPCronable\WPCronable;
 use WPT\Concerns\Instanceable;
+use WPT\Enums\NoticeType;
 use WPT\Processes\BackgroundProcess;
+
+use function WPT\toggleAdminNotice;
 
 class CronJob extends WPCronable
 {
@@ -21,9 +24,13 @@ class CronJob extends WPCronable
     public function run(): void
     {
         try {
+            toggleAdminNotice(NoticeType::Test);
+
             $items = \collect([]);
 
             if ($items->isEmpty()) {
+                toggleAdminNotice(NoticeType::Test, false);
+
                 return;
             }
 
@@ -41,6 +48,8 @@ class CronJob extends WPCronable
 
             $this->process->dispatch();
         } catch (\Exception $e) {
+            toggleAdminNotice(NoticeType::Test, false);
+
             \error_log($e);
 
             \wptPlugin()->logger()->general()->error($e->getMessage());
