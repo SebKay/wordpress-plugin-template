@@ -16,8 +16,7 @@ class CronJob extends WPCronable
 
     public function __construct(
         protected $process = new BackgroundProcess(),
-    ) {
-    }
+    ) {}
 
     public function run(): void
     {
