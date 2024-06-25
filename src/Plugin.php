@@ -39,6 +39,7 @@ class Plugin
             \register_setting('wpt-options', 'wpt_text_option');
             \register_setting('wpt-options', 'wpt_radio_option');
             \register_setting('wpt-options', 'wpt_select_option');
+            \register_setting('wpt-options', 'wpt_test_cron_enabled');
         }, 10);
     }
 
