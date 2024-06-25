@@ -2,7 +2,7 @@
 /*
     Plugin Name: WordPress Plugin Template
     Description: A simple template for writing WordPress plugins.
-    Version: 0.2.0
+    Version: 1.0.0
     Requires PHP: 8.2
     Text Domain: wp-plugin-template
     Author: Seb Kay
