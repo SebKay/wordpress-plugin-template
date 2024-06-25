@@ -2,6 +2,10 @@
 
 namespace WPT\Processes;
 
+use WPT\Enums\NoticeType;
+
+use function WPT\toggleAdminNotice;
+
 class BackgroundProcess extends \WPT_WP_Background_Process
 {
     protected $action = 'wpt_background_process';
@@ -21,5 +25,19 @@ class BackgroundProcess extends \WPT_WP_Background_Process
         }
 
         return false;
+    }
+
+    public function cancel()
+    {
+        parent::cancel();
+
+        toggleAdminNotice(NoticeType::Test, false);
+    }
+
+    public function complete()
+    {
+        toggleAdminNotice(NoticeType::Test, false);
+
+        parent::complete();
     }
 }
