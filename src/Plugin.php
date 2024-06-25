@@ -45,7 +45,7 @@ class Plugin
 
     public function cronSchedules(): void
     {
-        add_filter('cron_schedules', function (array $schedules): array {
+        \add_filter('cron_schedules', function (array $schedules): array {
             \collect(Helpers::wpCronIntervals())->each(function (array $interval) use (&$schedules) {
                 $schedules[$interval['slug']] = [
                     'interval' => $interval['value'] ?? '',
