@@ -81,6 +81,35 @@
 
         <hr>
 
+        <h2>
+            <?php _e('Cron Jobs', 'wp-plugin-template'); ?>
+        </h2>
+
+        <table class="form-table">
+            <tr valign="top">
+                <th scope="row">
+                    <?php _e('Test', 'wp-plugin-template'); ?>
+                </th>
+                <td>
+                    <label>
+                        <input type="radio" name="wpt_test_cron_enabled" value="0" <?php checked(0, esc_attr(get_option('wpt_test_cron_enabled', 0))); ?>>
+                        <span>
+                            No
+                        </span>
+                    </label>
+                    <br><br>
+                    <label>
+                        <input type="radio" name="wpt_test_cron_enabled" value="1" <?php checked(1, esc_attr(get_option('wpt_test_cron_enabled', 0))); ?>>
+                        <span>
+                            Yes
+                        </span>
+                    </label>
+                </td>
+            </tr>
+        </table>
+
+        <hr>
+
         <?php submit_button(); ?>
     </form>
 </div>
