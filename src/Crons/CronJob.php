@@ -43,6 +43,8 @@ class CronJob extends WPCronable
             $this->process->dispatch();
         } catch (\Exception $e) {
             \error_log($e);
+
+            \wptPlugin()->logger()->general()->error($e->getMessage());
         }
     }
 }
